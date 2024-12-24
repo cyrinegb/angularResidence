@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center my-4">List of Residences</h1>
+
+  <!-- Vérifie si des résidences sont disponibles -->
+  <div *ngIf="listResidences.length > 0; else noResidences">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let residence of listResidences">
+        <div class="card h-100">
+          <img 
+            [src]="residence.image" 
+            class="card-img-top img-fluid" 
+            alt="{{ residence.name }} image"
+            style="height: 200px; object-fit: cover;"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ residence.name }}</h5>
+            <p>{{ residence.address }}</p>
+            <p>Status: {{ residence.status }}</p>
+            <button class="btn btn-primary" [routerLink]="['/residence/details/', residence.id]">
+              Show Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si aucune résidence n'est trouvée -->
+  <ng-template #noResidences>
+    <p class="text-center text-muted">No residences available at the moment.</p>
+  </ng-template>
+</div>

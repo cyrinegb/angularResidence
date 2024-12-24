@@ -1,0 +1,51 @@
+{
+  "residences": [
+    {
+      "id": "1",
+      "name": "El fel",
+      "address": "ariana",
+      "image": "",
+      "status": "Disponible"
+    },
+    {
+      "id": "2",
+      "name": "El yassmin",
+      "address": "Borj Cedria",
+      "status": "Vendu"
+    },
+    {
+      "id": "3",
+      "name": "ahlem",
+      "address": "Borj Cedria",
+      "status": "Disponible"
+    },
+    {
+      "id": "4",
+      "name": "folla",
+      "address": "inconnu",
+      "status": "En Construction",
+      "image": "https://th.bing.com/th/id/R.e36c8eb277aa3faa4ce14b265a79974d?rik=DGdBujYn%2bA7c2g&pid=ImgRaw&r=0"
+    },
+    {
+      "id": "5",
+      "name": "warda",
+      "address": "megrine",
+      "image": "https://www.carrere-promotion.com/sites/default/files/2023-01/Community_Vue_Jardin_WEB_0.jpg",
+      "status": "Disponible"
+    }
+  ],
+  "apartments": [
+    {
+      "id": "1",
+      "apartNum": 11,
+      "surface": 100,
+      "ResidenceId": 1
+    },
+    {
+      "id": "2",
+      "apartNum": 102,
+      "surface": 150,
+      "ResidenceId": 1
+    }
+  ]
+}

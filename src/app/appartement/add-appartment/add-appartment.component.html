@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h1 class="text-center">Add Apartment</h1>
+
+  <form [formGroup]="apartForm" (ngSubmit)="onAdd()">
+    <div class="mb-3">
+      <label for="apartNum" class="form-label">Apartment Number</label>
+      <input type="text" id="apartNum" class="form-control" formControlName="apartNum" />
+      <div *ngIf="apartForm.get('apartNum')?.invalid && apartForm.get('apartNum')?.touched" class="text-danger mt-1">
+        <small>appartment number  is required.</small></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="floorNum" class="form-label">Floor Number</label>
+      <input type="text" id="floorNum" class="form-control" formControlName="floorNum" />
+        <div *ngIf="apartForm.get('floorNum')?.invalid && apartForm.get('floorNum')?.touched" class="text-danger mt-1">
+        <small>floor number  is required.</small></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="surface" class="form-label">Surface (m²)</label>
+      <input type="text" id="surface" class="form-control" formControlName="surface" />
+      <div *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched" class="text-danger mt-1">
+        <small>surface is required.</small></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="terrace" class="form-label">Terrace</label>
+      <select id="terrace" class="form-select" formControlName="terrace">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="surfaceTerrace" class="form-label">Surface Terrace (m²)</label>
+      <input type="text" id="surfaceTerrace" class="form-control" formControlName="surfaceTerrace" />
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select id="category" class="form-select" formControlName="category">
+        <option value="S+1">S+1</option>
+        <option value="S+2">S+2</option>
+        <option value="S+3">S+3</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="residence" class="form-label">Residence</label>
+      <select id="residence" class="form-select" formControlName="residence">
+        <option *ngFor="let residence of listResidences" [value]="residence.id">
+          {{ residence.name }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="apartForm.invalid">Add Apartment</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="onReset()">Reset</button>
+  </form>
+</div>

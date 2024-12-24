@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h1 class="text-center">Residence Details</h1>
+    <div *ngIf="residenceDetails; else loading">
+      <div class="card">
+        <img 
+          [src]="residenceDetails.image" 
+          class="card-img-top" 
+          alt="{{ residenceDetails.name }} image"
+          style="height: 300px; object-fit: cover;"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ residenceDetails.name }}</h5>
+          <p><strong>Address:</strong> {{ residenceDetails.address }}</p>
+          <p><strong>Status:</strong> {{ residenceDetails.status }}</p>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <button class="btn btn-primary" (click)="loadNextResidence()">Next</button>
+        <div>
+        <button class="btn btn-success me-2" (click)="navigateToAddResidence()">Add Residence</button>
+        <button class="btn btn-warning" (click)="navigateToUpdateResidence()">Update Residence</button>
+        </div>
+
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <p class="text-center text-muted">Loading residence details...</p>
+    </ng-template>
+  </div>
+  

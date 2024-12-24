@@ -1,0 +1,20 @@
+<form [formGroup]="userForm" (ngSubmit)="addUser()">
+  <label for="">userName: </label>
+  <input type="text" formControlName="username"    >
+
+  <div style="color: red;" *ngIf="userForm.get('username')?.invalid
+   && userForm.get('username')?.touched  "> UserName is required. </div>
+
+  <label for="">email: </label>
+  <input type="text"  formControlName="email"  >
+  <div style="color: red;" *ngIf="userForm.get('email')?.invalid
+   && userForm.get('email')?.touched  ">
+<span style="color: rgb(255, 170, 0);" *ngIf="userForm.get('email')?.errors?.['required']">Email is required </span>
+<span style="color: rgb(119, 55, 55);" *ngIf="userForm.get('email')?.errors?.['email']">Email format is invalid </span>
+
+
+  </div>
+
+  <button type="submit" [disabled]="userForm.invalid"  >Save</button>
+
+</form>

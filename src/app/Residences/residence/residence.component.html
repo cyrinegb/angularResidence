@@ -1,0 +1,71 @@
+<h1 class="text-center my-4">List of Residences</h1>
+
+<!-- Barre de recherche -->
+<input 
+  type="text" 
+  class="form-control mb-4" 
+  placeholder="Search residences..." 
+  [(ngModel)]="searchItem" 
+  (ngModelChange)="filterResidences()"
+/>
+
+<div class="container">
+  <div class="row">
+    <!-- Boucle sur les résidences filtrées -->
+    <div class="col-md-4 mb-4" *ngFor="let residence of filteredResidences">
+      <div class="card h-100">
+        <!-- Image -->
+        <img 
+          [src]="residence.image" 
+          class="card-img-top img-fluid" 
+          alt="{{ residence.name }} image"
+          style="height: 200px; object-fit: cover;"
+        />
+
+        <div class="card-body">
+          <!-- Nom de la résidence -->
+          <h5 class="card-title">{{ residence.name }}</h5>
+
+          <!-- Statut -->
+          <div [ngSwitch]="residence.status">
+            <li *ngSwitchCase="'Disponible'" style="color: green;">Disponible</li>
+            <li *ngSwitchCase="'Vendu'" style="color: red;">Vendu</li>
+            <li *ngSwitchCase="'En Construction'" style="color: orange;">En Construction</li>
+            <li *ngSwitchDefault style="color: gray;">Statut inconnu</li>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-3">
+            <button 
+              class="btn btn-primary me-2" 
+              (click)="showLocation(residence)"
+            >
+              Show Location
+            </button>
+            <span *ngIf="visiblity && residence.name === vv">
+              {{ residence.address }}
+            </span>
+          </div>
+
+          <button 
+            class="btn btn-danger me-2" 
+            (click)="addFavoris(residence)"
+          >
+            Like
+          </button>
+          <button 
+            class="btn btn-success" 
+            [routerLink]="['/residence/details/', residence.id]"
+          >
+            Show Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si aucune résidence trouvée -->
+  <div *ngIf="filteredResidences.length === 0" class="text-center mt-4">
+    <p class="text-muted">No residences match your search.</p>
+  </div>
+</div>
